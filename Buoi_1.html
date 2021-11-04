@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto Sans Mono">
+        <title>Javascript_Buoi1</title>
+    </head>
+    <style>
+        body
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Noto Sans Mono";
+            background: url("img/background.jpg");
+            background-size: cover;
+            color: #1ce480;
+        }
+        .container
+        {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border: 5px dotted #1ce480;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 10px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
+            text-align: center;
+        }
+    </style>
+    <body>
+        <div class="container">
+            <h2>Bài tập tính lương</h2>
+            <p id="luong"></p>
+            <h2>Tính năm Âm Lịch</h2>
+            <p id="nam_am_lich"></p>
+            <h2>Tính số ngày trong tháng</h2>
+            <p id="ngay"></p>
+        </div>
+        <script>
+            // Tính lương
+                let luong = 20;
+                let thue;
+                let luong_rong;
+                if (luong >= 15)
+                {
+                    thue = luong * 30 / 100;
+                    luong_rong = luong - thue;
+                }
+                else if(luong > 7 && luong < 15)
+                {
+                    thue = luong * 20 / 100;
+                    luong_rong = luong - thue;
+                }
+                else if(luong < 7) 
+                {
+                    thue = luong * 10 / 100;
+                    luong_rong = luong - thue;
+                }
+                document.getElementById("luong").innerHTML = 
+                `Lương là: ${luong} triệu, Thuế là: ${thue} triệu, Lương thực lĩnh là: ${luong_rong} triệu`;
+                // Tính năm âm lịch
+                let nam = 3000;
+                let nam_am_lich;
+                let du_can;
+                let du_chi;
+                du_can = (nam - 3) % 10;
+                du_chi = (nam -3) % 12;
+                switch (du_can)
+                {
+                    case 0:
+                        du_can = "Quý";
+                        break;
+                    case 1:
+                        du_can = "Giáp";
+                        break;
+                    case 2:
+                        du_can = "Ất";
+                        break;
+                    case 3:
+                        du_can = "Bính";
+                        break;
+                    case 4:
+                        du_can = "Đinh";
+                        break;
+                    case 5:
+                        du_can = "Mậu";
+                        break;
+                    case 6:
+                        du_can = "Kỷ";
+                        break;
+                    case 7:
+                        du_can = "Canh";
+                        break;
+                    case 8:
+                        du_can = "Tân";
+                        break;
+                    case 9:
+                        du_can = "Nhâm";
+                        break;
+                }
+                switch (du_chi)
+                {
+                    case 0:
+                        du_chi = "Hợi";
+                        break;
+                    case 1:
+                        du_chi = "Tý";
+                        break;
+                    case 2:
+                        du_chi = "Sửu";
+                        break;
+                    case 3:
+                        du_chi = "Dần";
+                        break;
+                    case 4:
+                        du_chi = "Mão";
+                        break;
+                    case 5:
+                        du_chi = "Thìn";
+                        break;
+                    case 6:
+                        du_chi = "Tỵ";
+                        break;
+                    case 7:
+                        du_chi = "Ngọ";
+                        break;
+                    case 8:
+                        du_chi = "Mùi";
+                        break;
+                    case 9:
+                        du_chi = "Thân";
+                        break;
+                    case 10:
+                        du_chi = "Dậu";
+                        break;
+                    case 11:
+                        du_chi = "Tuất";
+                        break;
+                }
+                nam_am_lich = du_can + ' ' + du_chi;
+                document.getElementById("nam_am_lich").innerHTML =
+                `Năm Dương Lịch: ${nam} ==> Năm Âm Lịch: ${nam_am_lich}`;
+                // Tinh ngay
+                let ngay;
+                let thang = 2;
+                switch (thang)
+                {
+                    case 1:
+                    case 3:
+                    case 5:
+                    case 7:
+                    case 8:
+                    case 10:
+                    case 12:
+                        ngay = 31;
+                        break;
+                    case 4:
+                    case 6:
+                    case 9:
+                    case 11:
+                        ngay = 30;
+                        break;
+                    case 2:
+                        if (nam % 400 == 0 || (nam % 4 == 0 && nam % 100 != 0))
+                        {
+                            ngay = 29;
+                        }
+                        else 
+                            ngay = 28;
+                }
+                document.getElementById("ngay").innerHTML =
+                `Tháng ${thang} năm ${nam} có ${ngay} ngày`;
+        </script>
+    </body>
+</html>
